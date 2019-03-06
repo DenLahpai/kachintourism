@@ -1,6 +1,6 @@
 
 <header>
-    <h1>
+    <h2>
         <?php echo $header; ?>
-    </h1>
+    </h2>
 </header>

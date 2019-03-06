@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rows_Users = $database->resultset();
     if ($rowCount == 1) {
         foreach ($rows_Users as $row_Users) {
-            $_SESSION['FirstName'] = 'Den';
+            $_SESSION['Id'] = $row_Users->Id;            
         }
         header("location:home.php");
     }

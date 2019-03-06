@@ -1,5 +1,15 @@
 <?php
 require_once "functions.php";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $rowCount = table_Users('check_before_insert', NULL, NULL);
+
+    if ($rowCount == 0) {
+        table_Users('insert', NULL, NULL);
+    }
+    else {
+        $error = "Your email has already been registered! Please <a href=\"mailto:den.lahpai@icloud.com\">contact us</a> if you would like to reset your password.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -55,7 +65,7 @@ require_once "functions.php";
                                 ?>
                             </li>
                             <li>
-                                <button type="button" id="buttonSubmit" name="buttonSubmit">Sumbit</button>
+                                <button type="button" id="buttonSubmit" name="buttonSubmit" onclick="checkThreeFields('FirstName', 'Email', 'Company');">Sumbit</button>
                             </li>
                         </ul>
                     </form>
@@ -66,4 +76,5 @@ require_once "functions.php";
         <!-- end of content -->
         <?php include "includes/footer.html"; ?>
     </body>
+    <script type="text/javascript" src="scripts/main.js"></script>
 </html>
