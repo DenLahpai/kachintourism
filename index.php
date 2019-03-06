@@ -1,5 +1,32 @@
 <?php
+require_once "functions.php";
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $database = new Database();
+
+    //getting data from the form
+    $Email = trim($_REQUEST['Email']);
+    $Password = trim($_REQUEST['Password']);
+
+    $query = "SELECT * FROM Users
+        WHERE BINARY Email = :Email
+        AND BINARY Password = :Password
+    ;";
+    $database->query($query);
+    $database->bind(':Email', $Email);
+    $database->bind(':Password', $Password);
+    $rowCount = $database->rowCount();
+    $rows_Users = $database->resultset();
+    if ($rowCount == 1) {
+        foreach ($rows_Users as $row_Users) {
+            $_SESSION['FirstName'] = 'Den';
+        }
+        header("location:home.php");
+    }
+    else {
+        $error = "Forgot your password? <a href=\"reset_password.php\">Click here</a> to reset your password.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -17,7 +44,7 @@
             <main>
                 <!-- login -->
                 <div class="login form">
-                    <form action="login.php" id="login" method="post">
+                    <form action="#" id="login" method="post">
                         <ul>
                             <li>
                                 <input type="text" name="Email" id="Email" placeholder="Your email">
