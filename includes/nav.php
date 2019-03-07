@@ -3,14 +3,14 @@
     <div class="search">
         <form action="#" method="post">
             <ul>
-                <li id="menu-button">
+                <li id="menu-button" onclick="openModal('mobile-menu')">
                     &#9776;
                 </li>
                 <li>
                     <input type="text" name="Search" id="Search">
                 </li>
                 <li>
-                    <button type="button" id="buttonSearch" name="buttonSearch">Search</button>
+                    <button type="button" id="buttonSearch" name="buttonSearch"><img src="images/search.png" alt=""></button>
                 </li>
             </ul>
         </form>
@@ -44,4 +44,20 @@
         </ul>
     </div>
     <!-- end of menu -->
+    <!-- mobile-menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button type="button" name="button" onclick="window.location.href='home.php';">Home</button>
+        <button type="button" name="button" onclick="window.location.href='aboutus.php';">About Us</button>
+        <button type="button" name="button" onclick="window.location.href='contactus.php'">Contact Us</button>
+        <?php
+        if (!empty($_SESSION['Id'])) {
+            echo "<button onclick=\"window.location.href='edit_users?UsersId=".$_SESSION['Id']."'\" >".$row_Users->FirstName."</button>";
+        }
+        else {
+            echo "<button onclick=\"window.location.href='index.php'\">Login</button>";
+        }
+        ?>
+        <button type="button" name="button" onclick="window.location.href='logout.php'">Logout</button>    
+    </div>
+    <!-- end of mobile-menu -->
 </nav>

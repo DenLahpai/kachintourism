@@ -23,3 +23,26 @@ function checkThreeFields(field1, field2, field3) {
         document.getElementById('buttonSubmit').type = 'submit';
     }
 }
+
+//scripts for modals
+//function to open a modal
+function openModal (item) {
+    var item = document.getElementById(item);
+    item.style.display = 'block';
+}
+
+//function to close modal
+function closeModal (item) {
+    var item = document.getElementById(item);
+    item.style.display = 'none';
+}
+
+window.addEventListener('click', outsideClick);
+
+//function to close the modal if a blank space is pressed
+function outsideClick(e) {
+    var menu = document.getElementById('mobile-menu');
+    if (e.target == menu) {
+        menu.style.display = 'none';
+    }
+}
