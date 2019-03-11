@@ -33,7 +33,6 @@ nav {
 }
 
 .search {
-    background: red;
     padding: 3px 12px;
 }
 
@@ -66,7 +65,7 @@ nav {
 
 
 .menu {
-    /* display: inline; */
+    display: none;
     padding: 3px 12px;
     float: right;
     background: var(--buttonColor);
@@ -172,4 +171,21 @@ button {
 
 .error {
     color: red;
+}
+
+/* Styles for tablets */
+@media screen and (min-width: 768px) {
+
+}
+
+
+/*styles for computers*/
+@media screen and (min-width: 992px) {
+    #menu-button {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
 }

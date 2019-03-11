@@ -31,7 +31,7 @@
             <li>
                 <?php
                 if (!empty($_SESSION['Id'])) {
-                    echo "<a href=\"\">$row_Users->FirstName</a>";
+                    echo "<a href=\"edit_users.php\" title=\"Edit Profile\">$row_Users->FirstName</a>";
                 }
                 else {
                     echo "<a href=\"index.php\">login</a>";
@@ -51,13 +51,13 @@
         <button type="button" name="button" onclick="window.location.href='contactus.php'">Contact Us</button>
         <?php
         if (!empty($_SESSION['Id'])) {
-            echo "<button onclick=\"window.location.href='edit_users?UsersId=".$_SESSION['Id']."'\" >".$row_Users->FirstName."</button>";
+            echo "<button onclick=\"window.location.href='edit_users.php'\" title=\"Edit Profile\">".$row_Users->FirstName."</button>";
         }
         else {
             echo "<button onclick=\"window.location.href='index.php'\">Login</button>";
         }
         ?>
-        <button type="button" name="button" onclick="window.location.href='logout.php'">Logout</button>    
+        <button type="button" name="button" onclick="window.location.href='logout.php'">Logout</button>
     </div>
     <!-- end of mobile-menu -->
 </nav>
