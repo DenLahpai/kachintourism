@@ -7,6 +7,18 @@ $rows_Users = table_Users('select_one', $_SESSION['Id'], NULL);
 foreach ($rows_Users as $row_Users) {
     // code...
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $rowCount = table_Users ('check_before_update', $_SESSION['Id'], NULL);
+
+    if ($rowCount == 0) {
+        table_Users ('update', $_SESSION['Id'], NULL);
+    }
+    else {
+        $error = 'The email is already used by someone else!';
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -25,8 +37,14 @@ foreach ($rows_Users as $row_Users) {
             <main>
                 <!-- Users form -->
                 <div class="Users form">
-                    <form action="index.html" method="post">
+                    <form action="#" method="post" enctype="multipart/form-data">
                         <ul>
+                            <li>
+                                <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row_Users->Profile).'"/>'; ?>
+                            </li>
+                            <li>
+                                <input type="file" name="Profile" id="Profile">
+                            </li>
                             <li>
                                 <select id="Title" name="Title">
                                     <?php
@@ -36,13 +54,53 @@ foreach ($rows_Users as $row_Users) {
                                             echo "<option value=\"Ms.\">Ms.</option>";
                                             echo "<option value=\"Mrs.\">Mrs.</option>";
                                             break;
-
+                                        case 'Ms.':
+                                            echo "<option value=\"Mr.\">Mr.</option>";
+                                            echo "<option value=\"Ms.\" selected>Ms.</option>";
+                                            echo "<option value=\"Mrs.\">Mrs.</option>";
+                                            break;
+                                        case 'Mrs.':
+                                            echo "<option value=\"Mr.\">Mr.</option>";
+                                            echo "<option value=\"Ms.\">Ms.</option>";
+                                            echo "<option value=\"Mrs.\" selected>Mrs.</option>";
+                                            break;
                                         default:
                                             // code...
                                             break;
                                     }
                                     ?>
                                 </select>
+                            </li>
+                            <li>
+                                <input type="text" name="FirstName" id="FirstName" value="<? echo $row_Users->FirstName; ?>">
+                            </li>
+                            <li>
+                                <input type="text" name="LastName" id="LastName" value="<? echo $row_Users->LastName; ?>">
+                            </li>
+                            <li>
+                                <input type="text" name="Email" id="Email" value="<? echo $row_Users->Email; ?>">
+                            </li>
+                            <li>
+                                <input type="text" name="Position" id="Position" value="<? echo $row_Users->Position; ?>">
+                            </li>
+                            <li>
+                                <input type="text" name="Company" id="Company" value="<? echo $row_Users->Company; ?>">
+                            </li>
+                            <li>
+                                <input type="text" name="City" id="City" value="<? echo $row_Users->City; ?>">
+                            </li>
+                            <li>
+                                <input type="text" name="Country" id="Country" value="<? echo $row_Users->Country; ?>">
+                            </li>
+                            <li class="error">
+                                <?php
+                                if (!empty($error)) {
+                                    echo $error;
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <button type="button" id="buttonSubmit" name="buttonSubmit" onclick="checkThreeFields('FirstName', 'Email', 'Company');">Update</button>
                             </li>
                         </ul>
                     </form>

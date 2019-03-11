@@ -1,6 +1,7 @@
 :root {
     --background-color: rgba(250,250,250,1);
-    --buttonColor: #EC7028;
+    --buttonColor: rgb(236,112,40, 1);
+    --themeColor1: rgb(236,112,40, 0.6)
 }
 
 * {
@@ -127,9 +128,94 @@ main p {
     text-align: center;
 }
 
+.Users img {
+    border: 6px solid gold;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
 .form {
     margin: 6px auto;
     text-align: center;
+}
+
+.form ul li {
+    list-style: none;
+}
+
+.form ul li textarea {
+    width: 66%;
+}
+
+.post {
+    text-align: center;
+    border: 6px solid #F5F6F7;
+    background: #F5F6F7;
+}
+
+.post ul li {
+    width: 60%;
+    margin: 6px auto;
+}
+
+.post ul li img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 3px;
+    border: 1px solid gold;
+}
+
+.post ul li input {
+    width: 60%;
+}
+
+.view_user {
+    cursor: pointer;
+    text-decoration: underline;
+    font-style: italic;
+    color: var(--buttonColor);
+    padding: 12px;
+    font-size: 1.2em;
+    border-top: 2px solid gold;
+}
+
+.view_user:hover {
+    font-weight: bold;
+}
+
+.comment {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    border-top: 1px solid gold;
+    border-bottom: 1px solid gold;
+}
+
+#modalUsers {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.4);
+}
+
+.modalUsers {
+    margin: 0px auto;
+    display: none;
+    text-align: center;
+    background: white;
+    width: 60%;
+    height: 60%;
+}
+
+.modalUsers ul li {
+    list-style: none;
 }
 
 footer {
@@ -164,13 +250,23 @@ button {
 	box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
+
+
 #Title {
     width: 180px;
     padding: 3px 12px;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .error {
     color: red;
+}
+
+.invisible {
+    display: none;
 }
 
 /* Styles for tablets */

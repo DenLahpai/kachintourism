@@ -46,3 +46,61 @@ function outsideClick(e) {
         menu.style.display = 'none';
     }
 }
+
+//functiuon to open Comment box
+function commentBox() {
+    var commentBox = document.getElementById('commentBox');
+    if (commentBox.style.display == 'block') {
+        commentBox.style.display = 'none';
+    }
+    else {
+        commentBox.style.display = 'block';
+    }
+}
+
+//function to open user modal
+function openUserModal(UsersId) {
+    var modal = document.getElementById('modalUsers');
+    modal.style.display = 'block';
+
+    var UsersId = document.getElementById(UsersId);
+    UsersId.style.display = 'block';
+}
+
+
+window.addEventListener('click', outsideClickUsers);
+//function to close the modal if a blank space is pressed
+function outsideClickUsers(e) {
+    var menu = document.getElementById('modalUsers');
+    if (e.target == menu) {
+        menu.style.display = 'none';
+        var a = 1;
+        while (a < 99) {
+            document.getElementById(a).style.display = 'none';
+            a++;
+        }
+    }
+}
+
+//enable button
+function enableButton (button, field) {
+    var field = document.getElementById(field);
+    var button = document.getElementById(button);
+    if (field.value != "" || field.value != null || field.value != " ") {
+        button.disabled = false;
+    }
+    else {
+        button.disabled = true;
+    }
+}
+
+//function to postComment()
+function postComment() {
+    var field = document.getElementById('Comment');
+    if (field.value == "" || field.value == null || field.value == " ") {
+        alert('Nothing to post!');
+    }
+    else {
+        document.getElementById('buttonComment').type = 'submit';
+    }
+}
