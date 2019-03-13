@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rows_Users = $database->resultset();
     if ($rowCount == 1) {
         foreach ($rows_Users as $row_Users) {
-            $_SESSION['Id'] = $row_Users->Id;            
+            $_SESSION['Id'] = $row_Users->Id;
         }
         header("location:home.php");
     }
@@ -62,13 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 }
                                 ?>
                             </li>
+                            <li>
+                                This is a private discussion platform. Please <a href="signup.php">signup</a> or login to access.
+                            </li>
                         </ul>
                     </form>
                 </div>
                 <!-- end of login -->
-                <p>
-                    This is a private discussion platform. Please <a href="signup.php">signup</a> or login to access.
-                </p>
             </main>
         </div>
         <!-- end of content -->

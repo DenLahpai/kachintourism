@@ -209,6 +209,7 @@ main p {#menu button
 
 .modalUsers {
     margin: 0px auto;
+    padding: 6px;
     display: none;
     text-align: center;
     background: white;

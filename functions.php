@@ -187,7 +187,7 @@ function table_Posts ($job, $var1, $var2) {
                 FROM Posts
                 LEFT OUTER JOIN Users
                 ON Posts.Users_Id = Users.Id
-                ORDER BY Posts.Updated
+                ORDER BY Posts.Updated DESC;
             ;";
             $database->query($query);
             return $r = $database->resultset();
