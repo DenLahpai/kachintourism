@@ -123,7 +123,7 @@ main ul li input {
     border-radius: 6px 0px 0px 0px;
 }
 
-main p {#menu button
+main p {
     text-align: center;
 }
 
@@ -179,7 +179,8 @@ main p {#menu button
     font-style: italic;
     color: var(--buttonColor);
     padding: 12px;
-    font-size: 1.2em;
+    font-size: 2em;
+    color: blue;
     border-top: 2px solid gold;
 }
 
@@ -237,15 +238,17 @@ main p {#menu button
 }
 
 .comments ul li {
+    padding: 12px;
     background: silver;
     border: 1px soid silver;
+    border-radius: 30px;
 }
 
 .comments ul li:nth-of-type(even) {
     background: none;
     font-style: italic;
     text-align: right;
-    color: blue;
+    color: silver;
     font-size: 0.6  em;
 }
 
@@ -253,7 +256,8 @@ main p {#menu button
     text-decoration: underline;
     font-style: italic;
     cursor: pointer;
-    color: var(--buttonColor);
+    color: blue;
+    font-size: 1.5em;
 }
 
 .comments ul li span:hover {

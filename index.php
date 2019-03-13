@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php
             $header = "Welcome";
             include "includes/header.php";
+            include "includes/nav.php";
             ?>
             <main>
                 <!-- login -->

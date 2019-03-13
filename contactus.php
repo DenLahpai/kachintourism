@@ -12,26 +12,19 @@ if (isset($_SESSION['Id'])) {
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <?php
-    $page_title = "About Us";
+    $page_title = 'Contact Us';
     include "includes/head.php";
     ?>
     <body>
         <!-- content -->
         <div class="content">
             <?php
-            $header = "About Us";
+            $header = 'Contact Us';
             include "includes/header.php";
             include "includes/nav.php";
             ?>
             <main>
-                <p>
-                    This is a private meeting room! We have gathered here to discuss about various topics to improve the tourism in Kachin State (nothern part of Myanmar).
-                    <br>
-                    Our vision is to develop tourism industry in our beautiful Kachin State.
-                </p>
-                <p>
-                    Anyone who shares our vision is welcomed to join our online meeting room.
-                </p>
+                <p>Your suggestions and feedback are precious for us to improve our services. Please feel free to contact us at <a href=\"mailto: den.lahpai@icloud.com\">den.lahpai@icloud.com</a>.</p>
             </main>
         </div>
         <!-- end of content -->
