@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form action="#" method="post">
                         <ul>
                             <li>
-                                <textarea name="Subject" id="Subject" rows="2" cols="90" placeholder="Subject" style="height: 1.8em;"></textarea>
+                                <textarea name="Subject" id="Subject" rows="2" cols="90" placeholder="Subject" style="height: 1.8em;" required></textarea>
                             </li>
                             <li>
-                                <textarea name="Description" id="Description" rows="9" cols="90" placeholder="The description of your post here... "></textarea>
+                                <textarea name="Description" id="Description" rows="9" cols="90" placeholder="The description of your post here... " required></textarea>
                             </li>
                             <li>
                                 <button type="button" id="buttonSubmit" name="buttonSubmit" onclick="checkThreeFields('Subject', 'Subject', 'Description');">New Post</button>

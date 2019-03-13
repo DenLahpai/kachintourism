@@ -67,8 +67,18 @@ function openUserModal(UsersId) {
     UsersId.style.display = 'block';
 }
 
+function closeUserModal () {
+    var menu = document.getElementById('modalUsers');
+    menu.style.display = 'none';
+    var a = 1;
+    while (a < 99) {
+        document.getElementById(a).style.display = 'none';
+        a++;
+    }
+}
 
 window.addEventListener('click', outsideClickUsers);
+window.addEventListener('touchend', outsideClickUsers);
 //function to close the modal if a blank space is pressed
 function outsideClickUsers(e) {
     var menu = document.getElementById('modalUsers');
