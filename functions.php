@@ -101,31 +101,59 @@ function table_Users ($job, $var1, $var2) {
             $City = trim($_REQUEST['City']);
             $Country = trim($_REQUEST['Country']);
 
-            $query = "UPDATE Users SET
-                Profile = :Profile,
-                Title = :Title,
-                FirstName = :FirstName,
-                LastName = :LastName,
-                Email = :Email,
-                Position = :Position,
-                Company = :Company,
-                City = :City,
-                Country = :Country
-                WHERE Id = :Id
-            ;";
-            $database->query($query);
-            $database->bind(':Profile', $Profile);
-            $database->bind(':Title', $Title);
-            $database->bind(':FirstName', $FirstName);
-            $database->bind(':LastName', $LastName);
-            $database->bind(':Email', $Email);
-            $database->bind(':Position', $Position);
-            $database->bind(':Company', $Company);
-            $database->bind(':City', $City);
-            $database->bind(':Country', $Country);
-            $database->bind(':Id', $var1);
-            if ($database->execute()) {
-                header("location: edit_users.php");
+            if (empty($Profile)) {
+                $query = "UPDATE Users SET
+                    Title = :Title,
+                    FirstName = :FirstName,
+                    LastName = :LastName,
+                    Email = :Email,
+                    Position = :Position,
+                    Company = :Company,
+                    City = :City,
+                    Country = :Country
+                    WHERE Id = :Id
+                ;";
+                $database->query($query);
+                $database->bind(':Title', $Title);
+                $database->bind(':FirstName', $FirstName);
+                $database->bind(':LastName', $LastName);
+                $database->bind(':Email', $Email);
+                $database->bind(':Position', $Position);
+                $database->bind(':Company', $Company);
+                $database->bind(':City', $City);
+                $database->bind(':Country', $Country);
+                $database->bind(':Id', $var1);
+                if ($database->execute()) {
+                    header("location: edit_users.php");
+                }
+            }
+            else {
+                $query = "UPDATE Users SET
+                    Profile = :Profile,
+                    Title = :Title,
+                    FirstName = :FirstName,
+                    LastName = :LastName,
+                    Email = :Email,
+                    Position = :Position,
+                    Company = :Company,
+                    City = :City,
+                    Country = :Country
+                    WHERE Id = :Id
+                ;";
+                $database->query($query);
+                $database->bind(':Profile', $Profile);
+                $database->bind(':Title', $Title);
+                $database->bind(':FirstName', $FirstName);
+                $database->bind(':LastName', $LastName);
+                $database->bind(':Email', $Email);
+                $database->bind(':Position', $Position);
+                $database->bind(':Company', $Company);
+                $database->bind(':City', $City);
+                $database->bind(':Country', $Country);
+                $database->bind(':Id', $var1);
+                if ($database->execute()) {
+                    header("location: edit_users.php");
+                }
             }
             break;
 

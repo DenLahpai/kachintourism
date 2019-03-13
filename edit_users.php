@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
+$Id = $_SESSION['Id'];
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="Users form">
                     <form action="#" method="post" enctype="multipart/form-data">
                         <ul>
+                            <li id="Users_Id" class="invisible"><? echo $_SESSION['Id'];?></li>
                             <li>
                                 <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row_Users->Profile).'"/>'; ?>
                             </li>
@@ -111,5 +113,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- end of content -->
         <?php include "includes/footer.html"; ?>
     </body>
+    <script type="text/javascript">
+        addEventListener("load", checkUploadPic());
+        //function to check if user has the authority to upload picture
+        function checkUploadPic(){
+            var UsersId = document.getElementById('Users_Id').innerHTML;
+            
+            if (UsersId > 4) {
+                document.getElementById('Profile').style.display = 'none';
+            }
+        }
+    </script>
     <script type="text/javascript" src="scripts/main.js"></script>
+
 </html>
