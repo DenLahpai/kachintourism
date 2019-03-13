@@ -218,6 +218,12 @@ main p {
 
 .modalUsers ul li {
     list-style: none;
+    background: var(--background-color);
+}
+
+.modalUsers ul img {
+    height: 180px;
+    background: red;
 }
 
 .commentBox {
