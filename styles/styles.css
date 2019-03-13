@@ -10,11 +10,11 @@
 }
 
 body {
-    background: silver;
+    /* background: silver; */
 }
 
 .content {
-    /* margin: 0px 120px; */
+    padding: 6px;
     background: white;
     display: grid;
     grid-gap: 3px;
@@ -63,7 +63,6 @@ nav {
     width: 18px;
     height: 18px;
 }
-
 
 .menu {
     display: none;
@@ -239,7 +238,7 @@ main p {
     font-style: italic;
     text-align: right;
     color: blue;
-    font-size: 0.6em;
+    font-size: 0.6  em;
 }
 
 .comments ul li span {
@@ -265,6 +264,7 @@ footer {
     background: #F5F6F7;
     text-align: center;
     width: 100%;
+    background: silver;
 }
 
 footer p {
