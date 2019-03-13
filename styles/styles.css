@@ -160,15 +160,18 @@ main p {
 }
 
 .post ul li img {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     margin-right: 3px;
     border: 1px solid gold;
 }
 
-.post ul li input {
-    width: 60%;
+.post ul li textarea {
+    width: 100%;
+    height: 6em;
+    display: block;
+    resize: none;
 }
 
 .view_user {
@@ -216,6 +219,44 @@ main p {
 
 .modalUsers ul li {
     list-style: none;
+}
+
+.commentBox {
+    display: none;
+}
+
+.comments  {
+    text-align: left;
+}
+
+.comments ul li {
+    background: silver;
+    border: 1px soid silver;
+}
+
+.comments ul li:nth-of-type(even) {
+    background: none;
+    font-style: italic;
+    text-align: right;
+    color: blue;
+    font-size: 0.6em;
+}
+
+.comments ul li span {
+    text-decoration: underline;
+    font-style: italic;
+    cursor: pointer;
+    color: var(--buttonColor);
+}
+
+.comments ul li span:hover {
+    font-weight: bold;
+}
+
+.comments ul li img {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
 }
 
 footer {

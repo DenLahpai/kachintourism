@@ -187,7 +187,7 @@ function table_Posts ($job, $var1, $var2) {
                 FROM Posts
                 LEFT OUTER JOIN Users
                 ON Posts.Users_Id = Users.Id
-                ORDER BY Updated
+                ORDER BY Posts.Updated
             ;";
             $database->query($query);
             return $r = $database->resultset();
@@ -201,7 +201,7 @@ function table_Posts ($job, $var1, $var2) {
 }
 
 //fucntion to use data from the table Comments
-table_Comments ($job, $var1, $var2) {
+function table_Comments ($job, $var1, $var2) {
     $database = new Database();
 
     switch ($job) {
@@ -210,7 +210,7 @@ table_Comments ($job, $var1, $var2) {
             $Posts_Id = $_REQUEST['Posts_Id'];
             $Comment = trim($_REQUEST['Comment']);
 
-            $query = "INSERT INTO Posts (
+            $query = "INSERT INTO Comments (
                 Posts_Id,
                 Comment,
                 Users_Id
@@ -227,6 +227,25 @@ table_Comments ($job, $var1, $var2) {
             if ($database->execute()) {
                 header("location: home.php");
             }
+            break;
+
+        case 'one_post':
+            $query = "SELECT
+                Comments.Id,
+                Comments.Comment,
+                Comments.Posts_Id,
+                Comments.Users_Id,
+                Comments.Created,
+                Users.FirstName,
+                Users.Profile
+                FROM Comments
+                LEFT OUTER JOIN Users
+                ON Comments.Users_Id = Users.Id
+                WHERE Comments.Posts_Id = :Posts_Id
+            ;";
+            $database->query($query);
+            $database->bind(':Posts_Id', $var1);
+            return $r = $database->resultset();
             break;
 
         default:

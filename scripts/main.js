@@ -94,13 +94,27 @@ function enableButton (button, field) {
     }
 }
 
-//function to postComment()
-function postComment() {
-    var field = document.getElementById('Comment');
-    if (field.value == "" || field.value == null || field.value == " ") {
-        alert('Nothing to post!');
+//function to show and hide commentBox
+function commentBox(i) {
+    var commentBox = 'commentBox'+i;
+    var openCommentBox = document.getElementById(commentBox);
+    if (openCommentBox.style.display == 'block') {
+        openCommentBox.style.display = 'none';
     }
     else {
-        document.getElementById('buttonComment').type = 'submit';
+        openCommentBox.style.display = 'block';
     }
+}
+
+//function to postComment()
+function postComment(i) {
+    var Comment = document.getElementById('Comment'+i);
+    if (Comment.value == "" || Comment.value == null) {
+        alert('Nothing to post');
+    }
+    else {
+        buttonComment = document.getElementById('buttonComment'+i);
+        buttonComment.type = 'submit';
+    }
+
 }

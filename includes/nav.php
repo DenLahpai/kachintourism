@@ -10,7 +10,7 @@
                     <input type="text" name="Search" id="Search">
                 </li>
                 <li>
-                    <button type="button" id="buttonSearch" name="buttonSearch"><img src="images/search.png" alt=""></button>
+                    <button type="button" id="buttonSearch" name="buttonSearch" onclick="alert('Sorry! This feature is currently unavailable.');"><img src="images/search.png" alt=""></button>
                 </li>
             </ul>
         </form>

@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php
                 //getting data from the table posts
                 $rows_Posts = table_Posts ('select_all', NULL, NULL);
+                $i = 1;
                 foreach ($rows_Posts as $row_Posts) {
                     echo "<!-- post -->";
                     echo "<div class=\"post\">";
@@ -66,16 +67,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo "<li class=\"invisible\"><input type=\"number\" name=\"Posts_Id\" id=\"Posts_Id\" value=\"$row_Posts->Posts_Id\"></li>";
                     echo "<li class=\"bold\">".$row_Posts->Subject."</li>";
                     echo "<li>".$row_Posts->Description."</li>";
-                    echo "<li class=\"comment\" onclick=\"commentBox();\">Comment</li>";
-                    echo "<li class=\"invisible\" id=\"commentBox\"><input type=\"text\" name=\"Comment\" id=\"Comment\"><button type=\"button\" id=\"buttonComment\" onclick=\"postComment();\">Post</button></li>";
+                    echo "<li class=\"comment\" onclick=\"commentBox($i);\">Comment</li>";
+                    echo "<li class=\"commentBox\" id=\"commentBox$i\">";
+                    echo "<textarea name=\"Comment\" id=\"Comment$i\"></textarea>";
+                    echo "<button type=\"button\" id=\"buttonComment$i\" onclick=\"postComment($i);\">Post</button></li>";
                     echo "</ul>";
                     echo "</form>";
-                    echo "<!-- comments -->";
-                    echo "<div class=\"comments\">";
-                    echo "</div>";
-                    echo "<!-- end of comments -->";
-                    echo "</div>";
+
+                    //getting data from the table Comments
+                    $rows_Comments = table_Comments ('one_post', $row_Posts->Posts_Id, NULL);
+
+                    foreach ($rows_Comments as $row_Comments) {
+                        include "includes/comments.php";
+                    }
+
                     echo "<!-- end of post -->";
+                    echo "</div>";
+                    $i++;
                 }
                 ?>
             </main>
@@ -99,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
         </div>
         <!-- endo of modalUsers -->
+        <?php include "includes/footer.html"; ?>
     </body>
     <script type="text/javascript" src="scripts/main.js"></script>
 </html>
