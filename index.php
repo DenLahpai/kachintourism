@@ -1,6 +1,14 @@
 <?php
 require_once "functions.php";
 
+//getting current user's data
+if (isset($_SESSION['Id'])) {
+    $rows_Users = table_Users('select_one', $_SESSION['Id'], NULL);
+    foreach ($rows_Users as $row_Users) {
+        // code...
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $database = new Database();
 

@@ -118,7 +118,7 @@ $Id = $_SESSION['Id'];
         //function to check if user has the authority to upload picture
         function checkUploadPic(){
             var UsersId = document.getElementById('Users_Id').innerHTML;
-            
+
             if (UsersId > 4) {
                 document.getElementById('Profile').style.display = 'none';
             }
