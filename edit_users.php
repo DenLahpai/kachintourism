@@ -83,6 +83,15 @@ $Id = $_SESSION['Id'];
                                 <input type="text" name="Email" id="Email" value="<? echo $row_Users->Email; ?>">
                             </li>
                             <li>
+                                <input type="password" name="old_password" placeholder="Old Password" >
+                            </li>
+                            <li>
+                                <input type="password" name="new_password1" id="new_password1" placeholder="New Password">
+                            </li>
+                            <li>
+                                <input type="password" name="new_password2" id="new_password2" placeholder="Confirm Password">
+                            </li>
+                            <li>
                                 <input type="text" name="Position" id="Position" value="<? echo $row_Users->Position; ?>">
                             </li>
                             <li>

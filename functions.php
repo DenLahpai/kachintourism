@@ -124,7 +124,7 @@ function table_Users ($job, $var1, $var2) {
                 $database->bind(':Country', $Country);
                 $database->bind(':Id', $var1);
                 if ($database->execute()) {
-                    header("location: edit_users.php");
+                    header("location: home.php");
                 }
             }
             else {
@@ -152,7 +152,7 @@ function table_Users ($job, $var1, $var2) {
                 $database->bind(':Country', $Country);
                 $database->bind(':Id', $var1);
                 if ($database->execute()) {
-                    header("location: edit_users.php");
+                    header("location: home.php");
                 }
             }
             break;
