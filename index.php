@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $Password = trim($_REQUEST['Password']);
 
     $query = "SELECT * FROM Users
-        WHERE BINARY Email = :Email
+        WHERE Email = :Email
         AND BINARY Password = :Password
     ;";
     $database->query($query);

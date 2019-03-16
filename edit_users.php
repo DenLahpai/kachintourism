@@ -12,13 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rowCount = table_Users ('check_before_update', $_SESSION['Id'], NULL);
 
     if ($rowCount == 0) {
-        table_Users ('update', $_SESSION['Id'], NULL);
+        $rowCountPassword = table_Users('check_password', $_SESSION['Id'], NULL);
+        if ($rowCountPassword == 1) {
+            table_Users('update', $_SESSION['Id'], NULL);
+        }
+        else {
+            $error = 'Wrong password!';
+        }
     }
     else {
         $error = 'The email is already used by someone else!';
     }
 }
-
 $Id = $_SESSION['Id'];
 ?>
 <!DOCTYPE html>
@@ -83,13 +88,10 @@ $Id = $_SESSION['Id'];
                                 <input type="text" name="Email" id="Email" value="<? echo $row_Users->Email; ?>">
                             </li>
                             <li>
-                                <input type="password" name="old_password" placeholder="Old Password" >
+                                <input type="password" name="current_password" id="current_password" placeholder="Current Password" >
                             </li>
                             <li>
-                                <input type="password" name="new_password1" id="new_password1" placeholder="New Password">
-                            </li>
-                            <li>
-                                <input type="password" name="new_password2" id="new_password2" placeholder="Confirm Password">
+                                <a href="reset_password.php">Click Here</a> to reset your passowrd.
                             </li>
                             <li>
                                 <input type="text" name="Position" id="Position" value="<? echo $row_Users->Position; ?>">
@@ -111,7 +113,7 @@ $Id = $_SESSION['Id'];
                                 ?>
                             </li>
                             <li>
-                                <button type="button" id="buttonSubmit" name="buttonSubmit" onclick="checkThreeFields('FirstName', 'Email', 'Company');">Update</button>
+                                <button type="button" id="buttonSubmit" name="buttonSubmit" onclick="checkThreeFields('FirstName', 'Email', 'current_password');">Update</button>
                             </li>
                         </ul>
                     </form>
@@ -134,5 +136,4 @@ $Id = $_SESSION['Id'];
         }
     </script>
     <script type="text/javascript" src="scripts/main.js"></script>
-
 </html>

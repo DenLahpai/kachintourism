@@ -128,3 +128,19 @@ function postComment(i) {
     }
 
 }
+
+//fucntion to check if 2 fields match
+function checkIfMatch(password1, password2) {
+    var field1 = document.getElementById(password1);
+    var field2 = document.getElementById(password2);
+
+    if (field1.value != field2.value) {
+        field1.style.background = 'brown';
+        field2.style.background = 'brown';
+        document.getElementsByClassName('error')[0].innerHTML = 'The two passwords do NOT match!';
+        document.getElementById('buttonSubmit').disabled = true;
+    }
+    else {
+        document.getElementById('buttonSubmit').disabled = false;
+    }
+}

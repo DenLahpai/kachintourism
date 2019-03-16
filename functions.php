@@ -89,6 +89,19 @@ function table_Users ($job, $var1, $var2) {
             return $r = $database->rowCount();
             break;
 
+        case 'check_password':
+            //getting data from the form
+            $Password = trim($_REQUEST['current_password']);
+            $query = "SELECT * FROM Users
+                WHERE Id = :Id
+                AND BINARY Password = :Password
+            ;";
+            $database->query($query);
+            $database->bind(':Id', $var1);
+            $database->bind(':Password', $Password);
+            return $r = $database->rowCount();
+            break;
+
         case 'update':
             // getting data from the form
             $Profile = file_get_contents($_FILES['Profile']['tmp_name']);
