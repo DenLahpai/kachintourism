@@ -7,6 +7,16 @@ $rows_Users = table_Users('select_one', $_SESSION['Id'], NULL);
 foreach ($rows_Users as $row_Users) {
     // code...
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $rowCount = table_Users('check_password', $_SESSION['Id'], NULL);
+    if ($rowCount == 1) {
+        table_Users ('update_password', $_SESSION['Id'], NULL);
+    }
+    else {
+        $error = "Wrong Password!";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

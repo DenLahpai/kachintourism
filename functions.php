@@ -170,6 +170,20 @@ function table_Users ($job, $var1, $var2) {
             }
             break;
 
+        case 'update_password':
+            // getting data from the form
+            $Password = trim($_REQUEST['new_password1']);
+            $query = "UPDATE Users SET
+                Password = :Password
+                WHERE Id = :Id
+            ;";
+            $database->query($query);
+            $database->bind(':Password', $Password);
+            $database->bind(':Id', $var1);
+            if ($database->execute()) {
+                header("location: home.php");
+            }
+            break;
         default:
             // code...
             break;
@@ -232,7 +246,6 @@ function table_Posts ($job, $var1, $var2) {
             ;";
             $database->query($query);
             return $r = $database->resultset();
-
             break;
 
         default:
