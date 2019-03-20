@@ -190,6 +190,36 @@ function table_Users ($job, $var1, $var2) {
     }
 }
 
+//function to send email
+function send_email ($job, $subject, $Users_Id) {
+    $rows_Users = table_Users ('select_one', $Users_Id, NULL);
+    foreach ($rows_Users as $row_Users) {
+        // code...
+    }
+    $rows_email = table_Users ('select_all', NULL, NULL);
+    switch ($job) {
+        case 'new_post':
+            $message = "<p>";
+            $message .= "Dear Colleagues, <br><br>";
+            $message .= $row_Users->FirstName." just posted a new post with ";
+            $message .= "subject: ".$subject." on Kachin State Tourism Meeting Room.<br>";
+            $message .= "Please log in to check out and discuss on the new subject at the link below. <br>";
+            $message .= "<a href=\"https://www.denlp.com/sites/kachinstatetourims\">https://www.denlp.com/sites/kachinstatetourims</a>";
+
+            $headers = "FROM: Kachin State Tourism <no-reply@denlp.com>\r\n";
+            $headers .= "Content-type: text/html\r\n";
+
+            foreach ($rows_email as $row_email) {
+                mail ($row_email->Email, $subject, $message, $header);
+            }
+            break;
+
+        default:
+            // code...
+            break;
+    }
+}
+
 // function to use the table Posts
 function table_Posts ($job, $var1, $var2) {
     $database = new Database();
@@ -225,6 +255,7 @@ function table_Posts ($job, $var1, $var2) {
             $database->bind(':Description', $Description);
             $database->bind(':Users_Id', $_SESSION['Id']);
             if ($database->execute()) {
+                send_email ('new_post', $Subject, $_SESSION['Id']);
                 header("location: home.php");
             }
             break;
