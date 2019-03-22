@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "There is already a post with your subject!";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -67,7 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo "<li class=\"invisible\"><input type=\"number\" name=\"Posts_Id\" id=\"Posts_Id\" value=\"$row_Posts->Posts_Id\"></li>";
                     echo "<li class=\"bold\">".$row_Posts->Subject."</li>";
                     echo "<li>".$row_Posts->Description."</li>";
-                    echo "<li style=\"text-align: right; font-style: italic;\" >".$row_Posts->Created."</li>";
+                    echo "<li style=\"text-align: right; font-style: italic;\" >".$row_Posts->Created."&nbsp;";
+                    echo "<a href=\"edit_posts.php?Posts_Id=$row_Posts->Posts_Id\">Edit</a></li>";
+
+                    if ($row_Posts->Created != $row_Posts->Updated) {
+                        echo "<li style=\"text-align: right; font-style: italic; color: blue\">Edited at: ".$row_Posts->Updated."</li>";
+                    }
                     echo "<li class=\"comment\" onclick=\"commentBox($i);\">Comment</li>";
                     echo "<li class=\"commentBox\" id=\"commentBox$i\">";
                     echo "<textarea name=\"Comment\" id=\"Comment$i\"></textarea>";
