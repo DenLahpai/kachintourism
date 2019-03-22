@@ -210,7 +210,7 @@ function send_email ($job, $subject, $Users_Id) {
             $headers .= "Content-type: text/html\r\n";
 
             foreach ($rows_email as $row_email) {
-                mail ($row_email->Email, $subject, $message, $header);
+                mail ($row_email->Email, $subject, $message, $headers);
             }
             break;
 
