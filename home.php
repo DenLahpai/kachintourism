@@ -43,6 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <li>
                                 <textarea name="Description" id="Description" rows="9" cols="90" placeholder="The description of your post here... " required></textarea>
                             </li>
+                            <li class="error">
+                                <?php
+                                if (!empty($error)) {
+                                    echo $error;
+                                }
+                                ?>
+                            </li>
                             <li>
                                 <button type="button" id="buttonSubmit" name="buttonSubmit" onclick="checkThreeFields('Subject', 'Subject', 'Description');">New Post</button>
                             </li>
@@ -50,9 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </form>
                 </div>
                 <!-- end of post form -->
-                <div class="error">
-
-                </div>
                 <?php
                 //getting data from the table posts
                 $rows_Posts = table_Posts ('select_all', NULL, NULL);
@@ -85,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     foreach ($rows_Comments as $row_Comments) {
                         include "includes/comments.php";
                     }
-
                     echo "<!-- end of post -->";
                     echo "</div>";
                     $i++;

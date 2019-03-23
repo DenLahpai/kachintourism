@@ -1,3 +1,4 @@
+
 //function to login
 function checkThreeFields(field1, field2, field3) {
     var field1 = document.getElementById(field1);

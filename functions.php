@@ -220,6 +220,13 @@ function send_email ($job, $subject, $Users_Id) {
     }
 }
 
+// function to check whether an Id is numeric
+function is_num ($var1) {
+    if (is_numeric($var1)) {
+
+    }
+}
+
 // function to use the table Posts
 function table_Posts ($job, $var1, $var2) {
     $database = new Database();
@@ -277,6 +284,44 @@ function table_Posts ($job, $var1, $var2) {
             ;";
             $database->query($query);
             return $r = $database->resultset();
+            break;
+
+        case 'select_one':
+            $query = "SELECT * FROM Posts
+                WHERE Id = :Id
+            ;";
+            $database->query($query);
+            $database->bind(':Id', $var1);
+            return $r = $database->resultset();
+            break;
+
+        case 'check_before_update':
+            $Subject = trim($_REQUEST['Subject']);
+            $query = "SELECT * FROM Posts
+                WHERE Subject = :Subject
+                AND Id != :Id
+            ;";
+            $database->query($query);
+            $database->bind(':Subject', $Subject);
+            $database->bind(':Id', $var1);
+            return $r = $database->rowCount();
+            break;
+
+        case 'update':
+            $Subject = trim($_REQUEST['Subject']);
+            $Description = trim($_REQUEST['Description']);
+            $query = "UPDATE Posts SET
+                Subject = :Subject,
+                Description = :Description
+                WHERE Id = :Id
+            ;";
+            $database->query($query);
+            $database->bind(':Subject', $Subject);
+            $database->bind(':Description', $Description);
+            $database->bind(':Id', $var1);
+            if ($database->execute()) {
+                header("location: home.php");
+            }
             break;
 
         default:
