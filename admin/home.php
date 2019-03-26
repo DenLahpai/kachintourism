@@ -31,6 +31,7 @@ if (isset($_SESSION['Id'])) {
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Title</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -44,6 +45,7 @@ if (isset($_SESSION['Id'])) {
                         $rows_all_Users = table_Users ('select_all', NULL, NULL);
                         foreach ($rows_all_Users as $row_all_Users) {
                             echo "<tr>";
+                            echo "<td>".$row_all_Users->Id."</td>";
                             echo "<td>".$row_all_Users->Title."</td>";
                             echo "<td>".$row_all_Users->FirstName."&nbsp";
                             echo $row_all_Users->LastName."</td>";
